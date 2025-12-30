@@ -1,5 +1,6 @@
 # Folder Structure :
 
+```graphql
 crawler/
 ├── src/
 │   ├── index.js              # entry point (wire everything)
@@ -18,6 +19,7 @@ crawler/
 │
 ├── package.json
 └── README.md
+```
 
 # Core modules & Responsibilities :
 
