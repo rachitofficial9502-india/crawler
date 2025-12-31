@@ -1,5 +1,6 @@
 # Folder Structure :
 
+```javascipt
 crawler/
 ├── src/
 │   ├── index.js              # entry point (wire everything)
@@ -18,6 +19,7 @@ crawler/
 │
 ├── package.json
 └── README.md
+```
 
 # Core modules & Responsibilities :
 
@@ -136,4 +138,5 @@ Owns the BFS loop
 Coordinates everything
 
 Enforces invariants
+
 
