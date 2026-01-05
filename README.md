@@ -21,122 +21,46 @@ crawler/
 └── README.md
 ```
 
-# Core modules & Responsibilities :
+# Crawler (V1)
 
-# config.js :
+This crwaler is the part of another project - a search engine, i am wroking on.
 
-Only constants
+What this crawler does:
+Starts from a single seed URL
+Crawls only the same hostname
+Uses BFS traversal with a depth limit
+Avoids revisiting or re-enqueueing URLs
+Fetches pages and stores raw crawl artifacts
+Writes results as append-only JSONL
 
-SEED_URL
+Each successfully fetched page is recorded exactly once per run.
 
-MAX_DEPTH
+What this crawler stores:
+URL (normalized)
+Depth
+Fetch status and HTTP status code
+Raw HTML (unprocessed)
+Outgoing links discovered on the page
 
-MAX_PAGES
+No text cleaning, indexing, or ranking happens here.
 
-ALLOWED_HOSTNAME
+Design guarantees:
+A URL is never crawled twice in the same run
+Crawl terminates cleanly when:
+frontier is empty, or
+page limit is reached
+Output is replayable and deterministic
 
-# frontier.js :
+Status:
+Crawler V1 is complete and frozen.
 
-Queue behavior only
+Future versions may add:
+robots.txt handling
+rate limiting
+concurrenc
+compression
 
-Enqueue { url, depth }
+But the core architecture is locked.
 
-Dequeue FIFO
-
-Check empty
-
-❗ Frontier does NOT know:
-
-visited
-
-normalization
-
-filtering
-
-# visited.js
-
-Set behavior only
-
-has(url)
-
-add(url)
-
-size tracking (for max pages)
-
-Visited is updated only when dequeued.
-
-# fetcher.js
-
-One job
-
-Input: normalized URL
-
-Output: { status, html } OR error
-
-# parser.js
-
-HTML → raw links
-
-Input: HTML + base URL
-
-Output: array of raw href strings
-
-Rules:
-
-Only <a href>
-
-No normalization here
-
-# normalize.js
-
-Deterministic URL normalization
-
-Resolve relative URLs
-
-Remove fragment
-
-Normalize hostname
-
-Remove default ports
-
-Normalize path (/page vs /page/)
-
-Keep query params
-
-# filters.js
-
-Pure boolean decisions
-
-Same hostname
-
-Depth allowed
-
-Avoid auth/login/signup
-
-Already visited?
-
-Already in frontier?
-
-# logger.js
-
-Human + machine readable logs
-
-enqueue
-
-dequeue
-
-fetch success/fail
-
-skip reasons
-
-# crawler.js
-
-🚨 The brain
-
-Owns the BFS loop
-
-Coordinates everything
-
-Enforces invariants
 
 
