@@ -55,6 +55,10 @@ Outgoing links discovered on the page
 
 No text cleaning, indexing, or ranking happens here.
 
+# Demo Video:
+
+https://youtu.be/shyyqyWIia4
+
 # Design guarantees:
 
 A URL is never crawled twice in the same run
@@ -81,6 +85,7 @@ concurrency
 compression
 
 But the core architecture is locked.
+
 
 
 
