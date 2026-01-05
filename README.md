@@ -66,7 +66,7 @@ page limit is reached
 
 Output is replayable and deterministic
 
-Status:
+# Status:
 
 Crawler V1 is complete and frozen.
 
@@ -81,6 +81,7 @@ concurrency
 compression
 
 But the core architecture is locked.
+
 
 
 
